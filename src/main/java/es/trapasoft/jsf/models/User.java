@@ -2,7 +2,9 @@
 package es.trapasoft.jsf.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
  
 /**
  * Esta clase representa el modelo de Usuario. Esta clase del model puede usarse en todas las capas: 
@@ -26,6 +28,12 @@ public class User implements Serializable {
     private String lastname;
     private Date birthdate;
  
+    private List<Project> projects;
+    
+    
+    public User() {
+        projects = new ArrayList<Project>();
+    }
     // Getters/setters ----------------------------------------------------------------------------
  
     public Long getId() {
