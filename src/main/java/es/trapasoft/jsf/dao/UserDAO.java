@@ -5,6 +5,7 @@
  */
 package es.trapasoft.jsf.dao;
 
+import es.trapasoft.jsf.models.Project;
 import es.trapasoft.jsf.models.User;
 import java.util.List;
 
@@ -88,5 +89,30 @@ public interface UserDAO {
      * @throws DAOException If something fails at database level.
      */
     public void changePassword(User user) throws DAOException;
+
+    /**
+     * Devuelve una lista de los proyectos en los que esta involucrado
+     * este usuario
+     * @param id
+     * @return 
+     */
+    public List<Project> findProjectsByUserId(Long id) throws DAOException;
+    
+    /**
+     * Asigna un proyecto a un usuario
+     * @param userId
+     * @param projectId
+     * @throws DAOException 
+     */
+    public void addProjectToUser(Long userId, Long projectId) throws DAOException;
+    
+    
+    /**
+     * Elimina la asignacion de un proyecto a un usaurio
+     * @param userId
+     * @param projectId
+     * @throws DAOException 
+     */
+    public void delProjectFromUser(Long userId, Long projectId) throws DAOException;
 
 }

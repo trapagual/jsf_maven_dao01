@@ -134,6 +134,10 @@ private static final String PROPERTY_PASSWORD = "password";
     }
  
     // You can add more DAO implementation getters here.
+    
+    public ProjectDAO getProjectDAO() {
+        return new ProjectDAOJDBC(this);
+    }
  
 }
  

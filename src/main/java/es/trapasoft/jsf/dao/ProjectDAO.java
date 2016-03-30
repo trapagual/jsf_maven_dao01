@@ -89,4 +89,11 @@ public interface ProjectDAO {
      * @throws DAOException 
      */
     public void delUserFromProject(Long userId, Long projectId) throws DAOException;
+    
+    /**
+     * Devuelve la lista de usuarios que participan en este proyecto
+     * @return
+     * @throws DAOException 
+     */
+    public List<User> findUsersByProjectId(Long id) throws DAOException;
 }

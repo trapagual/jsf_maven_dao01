@@ -6,7 +6,9 @@ package es.trapasoft.jsf.beans;
 
 
 import es.trapasoft.jsf.dao.DAOFactory;
+import es.trapasoft.jsf.dao.ProjectDAO;
 import es.trapasoft.jsf.dao.UserDAO;
+import es.trapasoft.jsf.models.Project;
 import es.trapasoft.jsf.models.User;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -24,6 +26,11 @@ public class UserBean {
     private DAOFactory javabase;
     private UserDAO userDAO;
     private List<User> users;
+    private List<Project> projects;
+    
+    private User selectedUser;
+    private Project selectedUserProject;
+    private ProjectDAO projectDAO;
     
     /**
      * Creates a new instance of UserBean
@@ -43,6 +50,21 @@ public class UserBean {
 
     public List<User> getUsers() {
         return users;
+    }
+
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
+        projectDAO = javabase.getProjectDAO();
+        // MAL AQUI HAY QUE RELLENAR LOS PROYECTOS DEL USUARIO   projects = projectDAO.findUsersByProjectId(selectedUser.getId());
+        projects = userDAO.findProjectsByUserId(selectedUser.getId());
+    }
+
+    public Project getSelectedUserProject() {
+        return selectedUserProject;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
     }
     
 }

@@ -173,7 +173,8 @@ public class ProjectDAOJDBC implements ProjectDAO {
         return p;
     }
 
-    private List<User> findUsersByProjectId(Long id) {
+    @Override
+    public List<User> findUsersByProjectId(Long id) {
         List<User> users = new ArrayList<User>();
         try {
             Connection connection = daoFactory.getConnection();
@@ -316,5 +317,7 @@ public class ProjectDAOJDBC implements ProjectDAO {
             throw new DAOException(e);
         }
     }
+
+
 
 }
